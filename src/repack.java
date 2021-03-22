@@ -2,7 +2,7 @@ import java.util.Stack;
 
 class Test
 {
-    // Returns decoded string for 'str'
+
     static String decode(String str)
     {
         Stack<Integer> integerstack = new Stack<>();
@@ -14,8 +14,7 @@ class Test
         {
             int count = 0;
 
-            // If number, convert it into number
-            // and push it into integerstack.
+
             if (Character.isDigit(str.charAt(i)))
             {
                 while (Character.isDigit(str.charAt(i)))
@@ -28,9 +27,7 @@ class Test
                 integerstack.push(count);
             }
 
-            // If closing bracket ']', pop elemment until
-            // '[' opening bracket is not found in the
-            // character stack.
+
             else if (str.charAt(i) == ']')
             {
                 temp = "";
@@ -51,19 +48,17 @@ class Test
                 if (!stringstack.empty() && stringstack.peek() == '[')
                     stringstack.pop();
 
-                // Repeating the popped string 'temo' count
-                // number of times.
+
                 for (int j = 0; j < count; j++)
                     result = result + temp;
 
-                // Push it in the character stack.
                 for (int j = 0; j < result.length(); j++)
                     stringstack.push(result.charAt(j));
 
                 result = "";
             }
 
-            // If '[' opening bracket, push it into character stack.
+
             else if (str.charAt(i) == '[')
             {
                 if (Character.isDigit(str.charAt(i-1)))
@@ -80,7 +75,7 @@ class Test
                 stringstack.push(str.charAt(i));
         }
 
-        // Pop all the elmenet, make a string and return.
+
         while (!stringstack.isEmpty())
         {
             result = stringstack.peek() + result;
@@ -90,7 +85,7 @@ class Test
         return result;
     }
 
-    // Driver method
+
     public static void main(String[] args)
     {
         String str = "3[xyz]4[xy]z";
